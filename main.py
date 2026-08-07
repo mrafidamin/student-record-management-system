@@ -22,8 +22,10 @@ print("16. Exit")
 
 # Interacting options using while loop
 while True:
-    option = int(input("Please select an option: "))
-    
+    try:
+        option = int(input("Please select an option: "))
+    except ValueError:
+        print("Please enter a valid number.")
     # 1. View All Students
     if option == 1: 
         view_students()

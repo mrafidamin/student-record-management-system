@@ -22,8 +22,16 @@ def add_student():
         print("ID already exists.")
     else:
         name = input("Enter full name: ")
-        age = int(input("Enter age: "))
-        cgpa = float(input("Enter CGPA: "))
+        try:
+            age = int(input("Enter age: "))
+        except ValueError:
+            print("Age must be an integer number.")
+        
+        try:
+            cgpa = float(input("Enter CGPA: "))
+        except ValueError:
+            print("CGPA must be a float number.")
+        
 
         students[new_student_id] = {
             'name': name,
@@ -38,8 +46,13 @@ def update_info():
     id_for_update = input("Enter student ID for update: ").upper()
     if id_for_update in students:
         name = input("Enter updated name: ")
-        age = int(input("Enter updated age: "))
-        cgpa = float(input("Enter updated CGPA: "))
+        
+        try:
+            age = int(input("Enter updated age: "))
+            cgpa = float(input("Enter updated CGPA: "))
+
+        except ValueError:
+            print("Age must be an integer and CGPA must be a float.")
 
         students[id_for_update]['name'] = name
         students[id_for_update]['age'] = age
@@ -69,9 +82,12 @@ for student in students.values():
 
 # Highest, lowest, and average CGPA
 def cgpa_stats():
-    highest_cgpa = max(cgpa_list)
-    lowest_cgpa = min(cgpa_list)
-    average_cgpa = sum(cgpa_list) / len(cgpa_list)
+    try:
+        highest_cgpa = max(cgpa_list)
+        lowest_cgpa = min(cgpa_list)
+        average_cgpa = sum(cgpa_list) / len(cgpa_list)
+    except ValueError:
+        print("No student CGPA available.")
     
     print(f"Highest CGPA: {highest_cgpa}")
     print(f"Lowest CGPA: {lowest_cgpa}")
