@@ -117,7 +117,8 @@ def sort_by_name():
         key = lambda x: x[1]['name']
     )
     print("Students sorted A-Z")
-    print(sorted_by_name)
+    for id, info in sorted_by_name:
+        print(f"{id}, {info['name']}, Age: {info['age']}, CGPA: {info['cgpa']}")
 
 # Sort students by age (Youngest → Oldest)
 def sort_by_age():
@@ -126,7 +127,8 @@ def sort_by_age():
         key = lambda x: x[1]['age']
     )
     print("Students sorted by age (Youngest → Oldest)")
-    print(sorted_by_age)
+    for id, info in sorted_by_age:
+        print(f"{id}, {info['name']}, Age: {info['age']}, CGPA: {info['cgpa']}")
 
 # Sort students by CGPA (Highest → Lowest)
 def sort_by_cgpa():
@@ -136,7 +138,8 @@ def sort_by_cgpa():
         reverse=True
     )
     print("Students sorted into CGPA")
-    print(sorted_by_cgpa)
+    for id, info in sorted_by_cgpa:
+        print(f"{id}, {info['name']}, Age: {info['age']}, CGPA: {info['cgpa']}")
     return sorted_by_cgpa
     
 # Display top three students
